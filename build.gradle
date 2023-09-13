@@ -22,6 +22,10 @@ dependencies {
 	//Dependencia agregada 2, gestionador de BD PostgreSQL
 	runtimeOnly 'org.postgresql:postgresql'
 
+	//Data Mapper
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
