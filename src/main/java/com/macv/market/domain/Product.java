@@ -2,6 +2,8 @@ package com.macv.market.domain;
 
 import com.macv.market.persistence.entity.Categoria;
 
+import java.util.Objects;
+
 public class Product {
 
     private int id;
@@ -11,6 +13,7 @@ public class Product {
     private int stock;
     private boolean active;
     private Category category;
+    private String barCode;
 
     public int getId() {
         return id;
@@ -68,5 +71,23 @@ public class Product {
         this.category = category;
     }
 
+    public String getBarCode() {
+        return barCode;
+    }
 
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + " name: " + name + " categoryId: " + categoryId +
+                " price: " + price + " stock: " + stock + " active: " + active +
+                " category: " + category + " barCode: " + barCode;
+    }
+
+    public boolean checkFields(){
+        return Objects.equals(name, "") || categoryId < 1 ||
+                Objects.equals(barCode, "") || price < 0 || stock < 0;
+    }
 }
