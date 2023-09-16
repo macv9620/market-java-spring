@@ -21,9 +21,12 @@ public class Compra {
     @Column(name = "medio_pago")
     private String medioPago;
 
+    //No mapeada en el dominio
     private String comentario;
+
     private String estado;
 
+    //No se mapeará
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
