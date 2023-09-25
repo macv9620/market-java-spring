@@ -21,7 +21,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public List<Product> getAll() {
-        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
+        List<Producto> productos = (List<Producto>) productoCrudRepository.findByOrderByIdProductoAsc();
         return mapper.toProducts(productos);
     }
 

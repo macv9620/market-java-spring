@@ -20,7 +20,7 @@ public class ProductService {
     }
 
     public List<Product> getByCategory(int categoryId){
-        return productRepository.getByCategory(categoryId);
+            return productRepository.getByCategory(categoryId);
     }
 
     public List<Product> getScarseProducts(int stockQuantity){

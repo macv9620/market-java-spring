@@ -52,8 +52,27 @@ public class ProductController {
         return new ResponseEntity<>(responseWrapper, HttpStatus.OK);
     }
 
-    public List<Product> getScarseProducts(int stockQuantity){
-        return productService.getScarseProducts(stockQuantity);
+    @GetMapping("/getScarse/{stock}")
+    public ResponseEntity<ResponseWrapper<Product>> getScarseProducts(@PathVariable("stock") int stockQuantity){
+        List<Product> data;
+        String message;
+        HttpStatus status = HttpStatus.OK;
+
+        List<Product> productsResult = productService.getScarseProducts(stockQuantity);
+
+        if(productsResult.isEmpty()){
+            data = null;
+            message = "0 products have less than " + stockQuantity + " units in stock";
+        } else {
+            data = productsResult;
+            message = productsResult.size() + " products have less than " + stockQuantity + " units in stock";
+        }
+
+        ResponseWrapper<Product> responseWrapper = new ResponseWrapper<>(
+                message,
+                data
+        );
+        return new ResponseEntity<>(responseWrapper, status);
     }
 
     @GetMapping("id/{id}")
