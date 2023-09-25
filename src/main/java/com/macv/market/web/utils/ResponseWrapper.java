@@ -1,4 +1,4 @@
-package com.macv.market.web.controller.utils;
+package com.macv.market.web.utils;
 
 import com.macv.market.domain.Product;
 

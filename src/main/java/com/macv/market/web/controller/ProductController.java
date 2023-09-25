@@ -2,7 +2,7 @@ package com.macv.market.web.controller;
 
 import com.macv.market.domain.Product;
 import com.macv.market.domain.service.ProductService;
-import com.macv.market.web.controller.utils.ResponseWrapper;
+import com.macv.market.web.utils.ResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController
