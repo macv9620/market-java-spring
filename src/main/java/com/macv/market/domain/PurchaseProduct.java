@@ -1,18 +1,18 @@
 package com.macv.market.domain;
 
 public class PurchaseProduct {
-    private int ProductId;
+    private int productId;
     private Integer quantity;
     private Double total;
     private Boolean active;
     private Product product;
 
     public int getProductId() {
-        return ProductId;
+        return productId;
     }
 
     public void setProductId(int productId) {
-        ProductId = productId;
+        this.productId = productId;
     }
 
     public Integer getQuantity() {

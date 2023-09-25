@@ -1,6 +1,7 @@
 package com.macv.market.domain.repository;
 
 import com.macv.market.domain.Purchase;
+import com.macv.market.domain.PurchaseProduct;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +11,7 @@ public interface PurchaseRepository {
     List<Purchase> getAllPurchases();
 
     //Obtener las compras que un usuario ha hecho;
-    Optional<List<Purchase>> getPurchasesById(String clientId);
+    Optional<List<Purchase>> getPurchasesByClientId(String clientId);
 
     //Guardar compra
     Purchase save(Purchase purchase);
