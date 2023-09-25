@@ -3,6 +3,10 @@ package com.macv.market.web.controller;
 import com.macv.market.domain.Product;
 import com.macv.market.domain.service.ProductService;
 import com.macv.market.web.utils.ResponseWrapper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,6 +24,9 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/all")
+    @ApiOperation("Returns all products")
+    //En este caso como sólo está parametrizada una respuesta 200 sólo se documentará esa
+    @ApiResponse(code = 200, message = "X products found")
     public ResponseEntity<ResponseWrapper<Product>> getAll(){
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("DataBaseType", "PostgreSQL");
@@ -50,8 +57,23 @@ public class ProductController {
     }
 
     @GetMapping("id/{id}")
+    @ApiOperation("Returns a product seached by its id")
+    //Como en este caso se tienen 2 respuestas se pueden documentar ambas
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Product found"),
+            @ApiResponse(code = 404, message = "Product not found")
+    })
+
+    //Adicionalmente se puede agregar información de los parámetros
     public ResponseEntity
-            <ResponseWrapper<Optional<Product>>> getById(@PathVariable("id") int productId){
+            <ResponseWrapper<Optional<Product>>> getById(
+                    @ApiParam(
+                            value = "Product id to be searched",
+                            required = true,
+                            example = "12"
+                    )
+                    @PathVariable("id") int productId
+    ){
 
         Optional<Product> productFound = productService.getById(productId);
         ResponseWrapper<Optional<Product>> responseWrapper = null;
