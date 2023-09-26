@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/purchases")
+@CrossOrigin
 public class PurchaseController {
 
     @Autowired
