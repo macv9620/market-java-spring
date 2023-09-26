@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.15'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	//Agregado
+	id 'application'
 }
 
 group = 'com.macv'
@@ -9,6 +11,17 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '11'
+	//Agregado
+	targetCompatibility = '11'
+}
+
+//Agregado hasta jar{}
+mainClassName = 'MarketApplication'
+DuplicatesStrategy.EXCLUDE
+jar{
+	manifest {
+		attributes "Main-Class": "$bootJarMainClassName"
+	}
 }
 
 repositories {
@@ -29,8 +42,8 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 
 	//Data Mapper
-	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
