@@ -16,11 +16,15 @@ java {
 }
 
 //Agregado hasta jar{}
-mainClassName = 'MarketApplication'
+mainClassName = 'MarketApplication.class'
 DuplicatesStrategy.EXCLUDE
+
+application {
+	mainClass = "com.macv.market.MarketApplication"
+}
 jar{
 	manifest {
-		attributes "Main-Class": "$bootJarMainClassName"
+		attributes "Main-Class": application.mainClass
 	}
 }
 
